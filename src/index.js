@@ -9,8 +9,8 @@ app.use(bodyParser.json()); //  global middlewares content type : application/js
 app.use(bodyParser.urlencoded({extended: true}));  //  global middlewares
 app.use(multer().any()) 
 
-mongoose.connect("mongodb+srv://sumandev:aBosU15RXTGZYkKq@cluster0.4du2i.mongodb.net/group34Database?retryWrites=true&w=majority", {useNewUrlParser: true})
-.then(() => console.log('mongodb running on 27017'))
+mongoose.connect("mongodb+srv://ShubhenduSukul:KuVlSGTp94VKKh7E@cluster0.pbil8.mongodb.net/Project-Shopping-Cart?authSource=admin&replicaSet=atlas-13oko1-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true", {useNewUrlParser: true})
+.then(() => console.log('MongoDB is running on 3000'))
 .catch(err => console.log((err)))
 
 app.use('/', route);

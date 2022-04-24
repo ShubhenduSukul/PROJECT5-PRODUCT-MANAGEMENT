@@ -6,7 +6,7 @@ const authentication = function(req, res, next){
 
         if(!token) return res.status(401).send({status:false, msg: "Token must be present"})
 
-        let decodedToken = jwt.verify(token.split(' ')[1], "group-34-productManagement", {ignoreExpiration: true})
+        let decodedToken = jwt.verify(token.split(' ')[1], "group-05-productManagement", {ignoreExpiration: true})
         // token => userId, exp , iat
         // invalid token 
         if(!decodedToken) return res.status(401).send({status: false, msg: "Invalid token "})

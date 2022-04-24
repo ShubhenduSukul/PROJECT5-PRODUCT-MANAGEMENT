@@ -113,7 +113,7 @@ const login = async function (req, res) {
         exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60, // 24 hours expiration time
         userId: user._id.toString(),
       },
-      "group-34-productManagement"
+      "group-05-productManagement"
     );
     return res.status(200).send({status: true,msg: "login succesfully",data: { userId: user._id, token: token }});
   } catch (error) {
@@ -245,7 +245,15 @@ const updateUser = async function (req,res){
      // method of becrypt
     
 
-    let updatedUser = await userModel.findOneAndUpdate({_id:req.userId}, {$set:{fname:fname,lname:lname,email:email,phone:phone,password:password,profileImage : uploadedFileURL,"address.shipping.city" : shippingCity, "address.shipping.street":shippingStreet,"address.shipping.pincode" : shippingPincode,"address.billing.city" : billingCity, "address.billing.street":billingStreet,"address.billing.pincode" : billingPincode}}, {new:true})
+    let updatedUser = await userModel.findOneAndUpdate({_id:req.userId},
+   {$set:{fname:fname,lname:lname,email:email,phone:phone,password:password,
+   profileImage : uploadedFileURL,
+   "address.shipping.city" : shippingCity,
+    "address.shipping.street":shippingStreet,
+    "address.shipping.pincode" : shippingPincode,
+    "address.billing.city" : billingCity, 
+    "address.billing.street":billingStreet,
+    "address.billing.pincode" : billingPincode}}, {new:true})
     return res.status(200).send({status:true,msg:'successfully updated', data:updatedUser})
 
     }

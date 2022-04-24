@@ -27,13 +27,14 @@ const createOrder = async function(req,res){ // input cancelable and status
         if(cart.userId.toString() !== req.params.userId) return res.status(403).send({status:false,msg:'you are not authorized to create order for this cart'})
 
         let totalQuantity = cart.items.reduce((a,b)=> a.quantity + b.quantity);
-
+        console.log(totalQuantity)
 
         let data = {userId:cart.userId,items:cart.items,totalItems:cart.totalItems,totalPrice:cart.totalPrice, totalQuantity:totalQuantity}
         let order = await orderModel.create(data)
         return res.status(201).send({status:true,msg:"order created successfully", data : order})
 
     }catch(error){
+        console.log(error)
         return res.status(500).send({status:false,msg:error.message})
     }
 }
